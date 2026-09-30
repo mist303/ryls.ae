@@ -256,9 +256,15 @@ h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.9rem
 .contact { border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); padding: clamp(28px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px 48px; align-items: center; margin-bottom: 64px; }
 .contact h2 { max-width: 12em; }
 .contact p { color: var(--muted-text); margin: 12px 0 0; }
-.mail { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
-.mail .addr { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.3rem, 2.6vw, 1.7rem); user-select: all; overflow-wrap: anywhere; }
-.copy-note { font-size: 0.78rem; color: var(--muted-text); min-height: 1.2em; margin: 8px 0 0; }
+.pilot-form { display: flex; flex-wrap: wrap; gap: 10px; }
+.pilot-form input[type="email"] { flex: 1; min-width: 200px; padding: 0.85rem 1.1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); color: var(--white); font: 400 0.95rem var(--font-sans); outline: none; transition: border-color .2s; }
+.pilot-form input[type="email"]:focus { border-color: var(--orange); }
+.pilot-form input::placeholder { color: var(--muted); }
+.pilot-form .btn { font-size: 1rem; }
+.pilot-form .btn:disabled { cursor: default; opacity: .6; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-note { font-size: 0.78rem; color: var(--muted-text); min-height: 1.2em; margin: 10px 0 0; }
+.form-note.error { color: var(--orange); }
 .legend { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px 18px; }
 
 footer.site { border-top: 1px solid var(--border); padding-block: 26px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 0.78rem; color: var(--muted-text); }
@@ -447,12 +453,12 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
       <p>Walkthroughs, diagnostics and pilot places.</p>
     </div>
     <div>
-      <div class="mail">
-        <span class="addr" id="addr">hello@ryls.ae</span>
-        <a class="btn btn-primary" href="mailto:hello@ryls.ae?subject=Ryls%20at%20the%20conference">Email us</a>
-        <button class="btn btn-ghost" type="button" id="copy-email">Copy email</button>
-      </div>
-      <p class="copy-note" id="copy-note" aria-live="polite"></p>
+      <form class="pilot-form" id="pilot-form">
+        <input type="email" name="email" placeholder="your@bank.ae" required autocomplete="email" aria-label="Work email">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-primary" type="submit">Book a pilot conversation</button>
+      </form>
+      <p class="form-note" id="form-note" aria-live="polite"></p>
     </div>
   </section>
 
@@ -464,20 +470,45 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
 
 <script>
 (function () {
-
-  var copyBtn = document.getElementById('copy-email');
-  var note = document.getElementById('copy-note');
-  copyBtn.addEventListener('click', function () {
-    var text = document.getElementById('addr').textContent;
-    function fallback() {
-      var r = document.createRange(); r.selectNodeContents(document.getElementById('addr'));
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      note.textContent = 'Selected. Press Ctrl+C or ⌘C to copy.';
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function () { note.textContent = 'Copied to clipboard.'; }, fallback);
-    } else { fallback(); }
+  // Pilot requests are relayed by Web3Forms to the Zoho inbox. The access key is public by design.
+  var form = document.getElementById('pilot-form');
+  var formNote = document.getElementById('form-note');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = form.querySelector('button');
+    var input = form.querySelector('input[type="email"]');
+    var email = input.value;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    input.disabled = true;
+    formNote.classList.remove('error');
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: '0f91748f-8aa6-4d8e-b00f-1ad0744eede3',
+        email: email,
+        botcheck: form.querySelector('input[name="botcheck"]').checked,
+        subject: 'Pilot conversation request · AI Everything conference',
+        from_name: 'ryls.ae conference page',
+        message: 'Pilot conversation requested from the AI Everything conference page by ' + email
+      })
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (!res.ok || !data.success) throw new Error(data.message || 'HTTP ' + res.status);
+      });
+    }).then(function () {
+      btn.textContent = "Thanks, we'll be in touch";
+      formNote.textContent = "We'll email you to book a time.";
+    }, function () {
+      btn.textContent = 'Book a pilot conversation';
+      btn.disabled = false;
+      input.disabled = false;
+      formNote.classList.add('error');
+      formNote.textContent = 'Something went wrong. Please try again in a moment.';
+    });
   });
+
 })();
 </script>
 

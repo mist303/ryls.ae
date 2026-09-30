@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ryls</title>
-  <meta name="description" content="Trade routing intelligence. Coming soon." />
+  <title>Ryls · Process mining for cross-border payments</title>
+  <meta name="description" content="Turn your payment data into a clear map of what’s working, what’s stuck and which cross-border rail gets the most value from your processes and policies." />
+  <meta name="theme-color" content="#262526" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ryls.ae" />
+  <meta property="og:title" content="Ryls · Process mining for cross-border payments" />
+  <meta property="og:description" content="Turn your payment data into a clear map of what’s working, what’s stuck and which cross-border rail gets the most value from your processes and policies." />
+  <meta property="og:url" content="https://www.ryls.ae/" />
+  <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
@@ -19,6 +26,7 @@
       --orange-dim: rgba(255, 89, 0, 0.15);
       --white:    #f2f2f2;
       --muted:    #7a7780;
+      --muted-text: #a09da6;
     }
 
     html { scroll-behavior: smooth; }
@@ -51,9 +59,11 @@
 
     .logo span { color: var(--orange); }
 
+    .nav-links { display: flex; gap: 1.5rem; }
+
     .nav-link {
       font-size: 0.85rem;
-      color: var(--muted);
+      color: var(--muted-text);
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -79,6 +89,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 600px;
+      max-width: 100%;
       height: 400px;
       background: radial-gradient(ellipse, rgba(255,89,0,0.07) 0%, transparent 65%);
       pointer-events: none;
@@ -92,11 +103,12 @@
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--muted-text);
       margin-bottom: 2.5rem;
     }
 
     .status-dot {
+      flex: none;
       width: 6px;
       height: 6px;
       border-radius: 50%;
@@ -122,12 +134,14 @@
 
     .tagline {
       font-size: clamp(1rem, 2vw, 1.15rem);
-      color: var(--muted);
+      color: var(--muted-text);
       font-weight: 300;
-      max-width: 380px;
+      max-width: 480px;
       line-height: 1.6;
       margin-bottom: 3.5rem;
     }
+
+    .tagline strong { color: var(--white); font-weight: 500; }
 
     /* ── FORM ── */
     .form-wrap {
@@ -156,6 +170,8 @@
     .form-wrap input:focus { border-color: var(--orange); }
     .form-wrap input::placeholder { color: var(--muted); }
 
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
     .btn {
       padding: 0.8rem 1.5rem;
       background: var(--orange);
@@ -172,13 +188,27 @@
 
     .btn:hover  { opacity: 0.88; }
     .btn:active { transform: scale(0.98); }
+    .btn:disabled { cursor: default; }
 
     .form-note {
       font-size: 0.72rem;
-      color: var(--muted);
+      color: var(--muted-text);
       margin-top: 0.75rem;
-      opacity: 0.65;
     }
+
+    .form-note.error { color: var(--orange); }
+
+    .more {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: var(--muted-text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .more:hover { color: var(--white); border-color: var(--orange); }
 
     /* ── FOOTER ── */
     footer {
@@ -193,8 +223,7 @@
 
     .footer-copy {
       font-size: 0.75rem;
-      color: var(--muted);
-      opacity: 0.5;
+      color: var(--muted-text);
     }
 
     .footer-links {
@@ -204,7 +233,7 @@
 
     .footer-links a {
       font-size: 0.78rem;
-      color: var(--muted);
+      color: var(--muted-text);
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -215,51 +244,94 @@
       nav, footer { padding: 1.5rem 1.25rem; }
       footer { flex-direction: column; align-items: flex-start; }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      .status-dot { animation: none; }
+    }
   </style>
 </head>
 <body>
 
 <nav>
-  <a class="logo" href="#">ryls<span>.</span></a>
-  <a class="nav-link" href="mailto:hello@ryls.ae">Contact</a>
+  <a class="logo" href="/">ryls<span>.</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="/conference/">What we do</a>
+    <a class="nav-link" href="mailto:hello@ryls.ae">Contact</a>
+  </div>
 </nav>
 
 <section class="hero">
   <div class="status">
     <span class="status-dot"></span>
-    Coming soon
+    Process mining for cross-border payments · UAE–China first
   </div>
 
-  <h1>Route smarter.<br><span class="accent">Pay less.</span></h1>
+  <h1>Route smarter.<br><span class="accent">Defend every decision.</span></h1>
 
   <p class="tagline">
-    Trade finance routing intelligence for the UAE–China corridor.
+    Turn your payment data into a <strong>clear map</strong> of what’s working, what’s stuck and which cross-border rail gets the most value from your <strong>processes and policies</strong>.
   </p>
 
-  <form class="form-wrap" onsubmit="handleSubmit(event)">
-    <input type="email" placeholder="your@bank.ae" required autocomplete="email" />
-    <button type="submit" class="btn">Get early access</button>
+  <form class="form-wrap" id="pilot-form" onsubmit="handleSubmit(event)">
+    <input type="email" name="email" placeholder="your@bank.ae" required autocomplete="email" aria-label="Work email" />
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <button type="submit" class="btn">Book a pilot conversation</button>
   </form>
-  <p class="form-note">No spam · UAE banks and trade finance institutions only</p>
+  <p class="form-note" id="form-note" aria-live="polite">Pilot places open · UAE banks and trade finance institutions</p>
+
+  <a class="more" href="/conference/">See what Ryls does →</a>
 </section>
 
 <footer>
   <span class="footer-copy">© 2026 ryls.ae</span>
   <div class="footer-links">
-    <a href="https://github.com/mist303/ryls.ae" target="_blank" rel="noopener">GitHub</a>
     <a href="mailto:hello@ryls.ae">hello@ryls.ae</a>
   </div>
 </footer>
 
 <script>
-  function handleSubmit(e) {
+  // Submissions are relayed by Web3Forms to the Zoho inbox. The access key is public by design.
+  const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+  const ACCESS_KEY = '0f91748f-8aa6-4d8e-b00f-1ad0744eede3';
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('button');
-    const input = e.target.querySelector('input');
-    btn.textContent = "You're on the list";
+    const form = e.target;
+    const btn = form.querySelector('button');
+    const input = form.querySelector('input[type="email"]');
+    const note = document.getElementById('form-note');
+    const botcheck = form.querySelector('input[name="botcheck"]').checked;
+
+    btn.textContent = 'Sending…';
     btn.disabled = true;
-    btn.style.opacity = '0.6';
     input.disabled = true;
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          email: input.value,
+          botcheck: botcheck,
+          subject: 'Pilot conversation request · ryls.ae',
+          from_name: 'ryls.ae website',
+          message: 'Pilot conversation requested from ryls.ae by ' + input.value
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || 'HTTP ' + res.status);
+
+      btn.textContent = "Thanks, we'll be in touch";
+      btn.style.opacity = '0.6';
+      note.textContent = "We'll email you to book a time.";
+    } catch (err) {
+      btn.textContent = 'Book a pilot conversation';
+      btn.disabled = false;
+      input.disabled = false;
+      note.classList.add('error');
+      note.innerHTML = 'Something went wrong. Email us at <a href="mailto:hello@ryls.ae" style="color:inherit">hello@ryls.ae</a>.';
+    }
   }
 </script>
 
