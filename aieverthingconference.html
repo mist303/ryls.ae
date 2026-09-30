@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Turn your payment data into a clear map of what’s working, what’s stuck and which cross-border rail gets the most value from your processes and policies.">
+<meta name="theme-color" content="#262526">
+<link rel="canonical" href="https://www.ryls.ae/aieverthingconference.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ryls.ae">
+<meta property="og:title" content="Ryls · Process mining for UAE–China payments">
+<meta property="og:description" content="Turn your payment data into a clear map of what’s working, what’s stuck and which cross-border rail gets the most value from your processes and policies.">
+<meta property="og:url" content="https://www.ryls.ae/aieverthingconference.html">
+<meta name="twitter:card" content="summary">
+<!-- If this page is only for the event, uncomment the next line to keep it out of search results -->
+<!-- <meta name="robots" content="noindex"> -->
+<title>Ryls · Process mining for UAE–China payments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@600;700&display=swap">
+<style>
+/* Layout: left-set hero with a live-looking decision card, then a status filter over outcome-grouped feature lists; single dark theme from the Ryls design system (ryls.ae). */
+:root {
+  --bg: #262526;
+  --bg-card: #2f2e30;
+  --border: #3a393b;
+  --orange: #ff5900;
+  --orange-dim: rgba(255, 89, 0, 0.15);
+  --white: #f2f2f2;
+  --muted: #7a7780;
+  --muted-text: #a09da6;
+  --on-orange: #ffffff;
+  --canvas: #1f1e1f;
+  --edge: #6b6870;
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 8px;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--white); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { width: 100%; max-width: 1160px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); }
+
+/* nav */
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 28px; }
+.wordmark { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.01em; text-decoration: none; color: var(--white); }
+.wordmark span { color: var(--orange); }
+.nav-links { display: flex; gap: 24px; flex-wrap: wrap; font-size: 0.85rem; }
+.nav-links a { color: var(--muted-text); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--white); }
+
+/* hero */
+.hero { position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(32px, 5vw, 72px); align-items: center; padding-block: clamp(32px, 6vw, 72px) clamp(56px, 8vw, 96px); }
+.hero::before { content: ""; position: absolute; top: 20%; left: 30%; width: 640px; max-width: 90vw; height: 420px; transform: translate(-50%, -50%); background: radial-gradient(ellipse, rgba(255, 89, 0, 0.08) 0%, rgba(255, 89, 0, 0) 65%); pointer-events: none; }
+.hero > * { position: relative; min-width: 0; }
+.status { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-text); margin: 0 0 28px; }
+.status i { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: pulse 2.5s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .2; } }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.6rem, 6.4vw, 5.2rem); line-height: 1; letter-spacing: -0.03em; margin: 0 0 24px; text-wrap: balance; }
+h1 .accent { color: var(--orange); display: block; }
+.lede { font-size: clamp(1.02rem, 1.6vw, 1.15rem); font-weight: 300; color: var(--muted-text); max-width: 34em; margin: 0 0 36px; }
+.lede strong { color: var(--white); font-weight: 500; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 0.85rem 1.5rem; border-radius: var(--radius); border: 1px solid transparent; font: 700 1.2rem/1.2 var(--font-sans); text-decoration: none; cursor: pointer; transition: opacity .2s, transform .1s, border-color .2s; }
+.btn:active { transform: scale(.98); }
+.btn-primary { background: var(--orange); color: var(--on-orange); }
+.btn-primary:hover { opacity: .88; }
+.btn-ghost { background: transparent; color: var(--white); border-color: var(--border); font-size: 1rem; font-weight: 500; }
+.btn-ghost:hover { border-color: var(--muted); }
+.aud { font-size: 0.78rem; color: var(--muted-text); margin: 14px 0 0; }
+
+/* decision card */
+.decision { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; font-size: 0.86rem; }
+.decision header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+.decision .id { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.01em; }
+.tag-illu { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-text); border: 1px dashed var(--muted); border-radius: 999px; padding: 3px 9px; white-space: nowrap; }
+.corridor { color: var(--muted-text); margin: 0 0 18px; font-size: 0.8rem; }
+.rails { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.rail { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 11px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); }
+.rail .rank { font-family: var(--font-display); font-weight: 700; color: var(--muted-text); text-align: center; font-variant-numeric: tabular-nums; }
+.rail .nm { font-weight: 600; }
+.rail .sub { display: block; font-size: 0.74rem; color: var(--muted-text); font-weight: 400; }
+.rail .verdict { font-size: 0.72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-text); }
+.rail.top { border-color: var(--orange); background: var(--orange-dim); }
+.rail.top .rank, .rail.top .verdict { color: var(--orange); }
+.rail.off { opacity: .6; }
+.basis { margin: 16px 0 0; padding: 14px 0 0; border-top: 1px solid var(--border); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; }
+.basis div { min-width: 0; }
+.basis dt { font-size: 0.66rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-text); margin: 0; }
+.basis dd { margin: 2px 0 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.basis .ind { color: var(--orange); }
+
+/* pillars strip */
+.pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.pillar { background: var(--bg); padding: 26px 24px; }
+.pillar h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin: 0 0 8px; letter-spacing: -0.01em; }
+.pillar p { margin: 0; color: var(--muted-text); font-size: 0.93rem; }
+.pillar .k { font-size: 0.7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 12px; display: block; }
+
+/* features */
+.features { padding-block: clamp(64px, 9vw, 112px) 24px; }
+.sec-head { display: flex; justify-content: space-between; align-items: end; gap: 24px 40px; flex-wrap: wrap; margin-bottom: 28px; }
+h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.9rem, 3.6vw, 2.8rem); line-height: 1.05; letter-spacing: -0.025em; margin: 0; text-wrap: balance; max-width: 16em; }
+.sec-head p { margin: 10px 0 0; color: var(--muted-text); max-width: 36em; }
+
+.filters { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 14px; margin-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; font: 500 0.84rem/1 var(--font-sans); color: var(--muted-text); background: transparent; border: 1px solid var(--border); border-radius: 999px; padding: 9px 14px; cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+.chip:hover { color: var(--white); border-color: var(--muted); }
+.chip[aria-pressed="true"] { color: var(--white); border-color: var(--orange); background: var(--orange-dim); }
+.chip .n { font-variant-numeric: tabular-nums; color: var(--muted-text); font-size: 0.76rem; }
+
+/* status marks: shape + word, never colour alone */
+.st { display: inline-flex; align-items: center; gap: 7px; font-size: 0.68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; color: var(--muted-text); }
+.st::before { content: ""; width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.st.live { color: var(--white); }
+.st.live::before { background: var(--white); }
+.st.pilot { color: var(--orange); }
+.st.pilot::before { background: var(--orange); }
+.st.soon { color: var(--orange); }
+.st.soon::before { border: 2px solid var(--orange); width: 6px; height: 6px; }
+.st.road::before { border: 2px solid var(--muted-text); width: 6px; height: 6px; }
+.st.vision::before { border: 2px dashed var(--muted); width: 6px; height: 6px; }
+
+.group { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2fr); gap: 16px 48px; padding-block: 36px; border-bottom: 1px solid var(--border); }
+.group[hidden] { display: none !important; }
+.g-intro h3 { font-family: var(--font-display); font-size: 1.35rem; line-height: 1.2; font-weight: 600; margin: 0 0 10px; letter-spacing: -0.01em; text-wrap: balance; }
+.g-intro p { margin: 0; color: var(--muted-text); font-size: 0.93rem; }
+.g-intro .who { display: inline-block; margin-top: 14px; font-size: 0.72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-text); }
+.items { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
+.items li { padding: 16px 0; border-top: 1px solid var(--border); min-width: 0; }
+.items li:nth-child(-n+2) { border-top: 0; padding-top: 2px; }
+.items li[hidden] { display: none !important; }
+.items h4 { font-size: 1rem; font-weight: 600; margin: 0 0 4px; line-height: 1.35; }
+.items .st + h4 { margin-top: 8px; }
+.items p { margin: 0; color: var(--muted-text); font-size: 0.9rem; }
+.caveat { display: block; margin-top: 8px; font-size: 0.8rem; color: var(--muted-text); padding-left: 10px; border-left: 1px solid var(--muted); }
+
+/* process explorer illustration */
+.pm { grid-column: 1 / -1; margin: 12px 0 0; border: 1px solid var(--border); border-radius: 12px; background: var(--canvas); overflow: hidden; font-size: 0.8rem; }
+.pm-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; padding: 14px 16px; border-bottom: 1px solid var(--border); background: var(--bg-card); }
+.pm-title { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.pm-name { font-family: var(--font-display); font-weight: 600; font-size: 1rem; }
+.pm-tools { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: end; }
+.pm-ctl { display: grid; gap: 6px; min-width: 0; }
+.pm-lbl { display: flex; align-items: center; gap: 10px; font-size: 0.68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-text); font-weight: 600; }
+.pm-lbl .st { font-size: 0.6rem; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; flex-wrap: wrap; }
+.seg button, .tog, .levels button, .pm-zoom button { font: 500 0.78rem/1 var(--font-sans); color: var(--muted-text); background: var(--bg); border: 0; padding: 8px 11px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--border); }
+.seg button[aria-pressed="true"], .levels button[aria-pressed="true"] { background: var(--white); color: var(--bg); }
+.tog { border: 1px solid var(--border); border-radius: var(--radius); text-align: left; }
+.tog[aria-pressed="true"] { border-color: var(--orange); color: var(--white); background: var(--orange-dim); }
+.pm-body { display: grid; grid-template-columns: 76px minmax(0, 1fr) 240px; min-height: 0; }
+.pm-rail { border-right: 1px solid var(--border); padding: 14px 10px; display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center; }
+.pm-rail .pm-lbl { flex-direction: column; gap: 6px; }
+.levels { display: grid; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; width: 36px; }
+.levels button { padding: 8px 0; font-variant-numeric: tabular-nums; }
+.levels button + button { border-top: 1px solid var(--border); }
+.pm-hint { font-size: 0.68rem; color: var(--muted-text); line-height: 1.3; }
+.pm-map { position: relative; min-width: 0; height: 700px; display: flex; flex-direction: column; }
+.pm-map svg#pm-svg { display: block; width: 100%; flex: 1 1 auto; min-height: 0; touch-action: pan-y; }
+.pm-map.zoomed svg#pm-svg { cursor: grab; touch-action: none; }
+.pm-map.dragging svg#pm-svg { cursor: grabbing; }
+.pm-dot { fill: var(--border); }
+.pm-zoom { position: absolute; top: 12px; right: 12px; display: flex; align-items: center; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.pm-zoom .st { background: var(--bg-card); padding: 8px 10px; font-size: 0.6rem; align-self: stretch; }
+.pm-zoom button { background: var(--bg-card); min-width: 34px; }
+.pm-zoom button:hover, .seg button:hover, .levels button:hover { color: var(--white); }
+.pm-mini { display: grid; gap: 8px; border-top: 1px solid var(--border); padding-top: 12px; }
+.pm-mini svg { width: 100%; max-width: 180px; height: auto; display: block; background: var(--canvas); border: 1px solid var(--border); border-radius: 4px; }
+.mini-vp { fill: none; stroke: var(--orange); stroke-width: 8; }
+.pm-tp { flex: none; margin: 0 12px 12px; background: var(--bg-card); border: 1px solid var(--orange); border-radius: var(--radius); padding: 9px 12px; color: var(--muted-text); line-height: 1.4; }
+.pm-tp b { color: var(--orange); font-weight: 600; margin-right: 6px; }
+.pm-tp[hidden] { display: none !important; }
+.tabn { font-variant-numeric: tabular-nums; color: var(--white); }
+.pm-insp { border-left: 1px solid var(--border); padding: 14px 16px; background: var(--bg-card); display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.pm-insp h5 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin: 2px 0 0; line-height: 1.25; }
+.in-stats { margin: 0; display: grid; gap: 8px; }
+.in-stats div { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+.in-stats dt { color: var(--muted-text); }
+.in-stats dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; }
+.in-sub { margin: 6px 0 0; font-size: 0.68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-text); font-weight: 600; }
+.in-rep { display: grid; gap: 6px; }
+.rep-row { display: grid; grid-template-columns: 22px minmax(0, 1fr) 40px; gap: 8px; align-items: center; font-variant-numeric: tabular-nums; }
+.rep-row .bar { height: 8px; border-radius: 4px; background: var(--border); overflow: hidden; }
+.rep-row .bar i { display: block; height: 100%; background: var(--white); border-radius: 4px; }
+.rep-row span:last-child { text-align: right; color: var(--muted-text); }
+.in-note { margin: auto 0 0; font-size: 0.72rem; color: var(--muted-text); line-height: 1.4; }
+
+/* svg graph */
+.e-path { fill: none; stroke: var(--edge); }
+.e-path.hot { stroke: var(--orange); }
+.ar-m { fill: var(--edge); }
+.ar-h { fill: var(--orange); }
+.e-pill { fill: var(--canvas); stroke: var(--edge); stroke-width: 1; }
+.e-pill.hot { stroke: var(--orange); }
+.e-txt { fill: var(--white); font: 600 10.5px var(--font-sans); font-variant-numeric: tabular-nums; }
+.n-box { fill: var(--bg-card); stroke: var(--border); stroke-width: 1.2; }
+.node { cursor: pointer; outline: none; }
+.node:hover .n-box, .node:focus-visible .n-box { stroke: var(--muted-text); }
+.node.sel .n-box { stroke: var(--white); stroke-width: 2; }
+.node.end-hot .n-box { stroke: var(--orange); stroke-width: 2; }
+.n-name { fill: var(--white); font: 600 11.5px var(--font-sans); }
+.n-sub { fill: var(--muted-text); font: 400 10.5px var(--font-sans); font-variant-numeric: tabular-nums; }
+.n-bar { fill: var(--orange); }
+.term { fill: var(--canvas); stroke: var(--muted-text); stroke-width: 1.5; }
+.term-txt { fill: var(--muted-text); font: 600 10px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; }
+.hot-tag { fill: var(--orange); }
+.hot-tag-txt { fill: var(--bg); font: 700 9.5px var(--font-sans); letter-spacing: .06em; }
+
+@media (max-width: 900px) {
+  .pm-body { grid-template-columns: minmax(0, 1fr); }
+  .pm-rail { order: 2; border-right: 0; border-top: 1px solid var(--border); flex-direction: row; flex-wrap: wrap; justify-content: flex-start; text-align: left; padding: 12px 16px; }
+  .pm-rail .pm-lbl { flex-direction: row; }
+  .levels { display: flex; width: auto; }
+  .levels button { padding: 8px 12px; }
+  .levels button + button { border-top: 0; border-left: 1px solid var(--border); }
+  .pm-map { order: 1; height: auto; display: flex; flex-direction: column; }
+  .pm-map svg#pm-svg { height: auto; aspect-ratio: 640 / 690; max-height: 78vh; }
+  .pm-zoom { top: 8px; right: 8px; }
+  .pm-mini svg { max-width: 140px; }
+  .pm-insp { order: 3; border-left: 0; border-top: 1px solid var(--border); }
+}
+
+/* feature cards */
+.features h2 { margin-bottom: 24px; }
+.features .h2row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.swipe { display: none; font-size: 0.78rem; color: var(--muted-text); white-space: nowrap; }
+.fgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.fcard, .fwide { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; min-width: 0; }
+.fwide { margin-top: 16px; }
+.fcard .k, .fwide .k { display: block; font-size: 0.7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 8px; }
+.fcard h3, .fwide h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; margin: 0; text-wrap: balance; }
+.flist { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
+.flist.cols { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+.flist li { position: relative; padding-left: 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 2px 10px; font-size: 0.95rem; line-height: 1.4; min-width: 0; }
+.flist li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 5px; height: 5px; border-radius: 50%; background: var(--muted); }
+.fsub { margin: 8px 0 0; color: var(--muted-text); max-width: 46em; }
+.fnote { margin: 14px 0 0; font-size: 0.78rem; line-height: 1.45; color: var(--muted-text); }
+.fwide .pm { margin-top: 20px; }
+
+/* principle band */
+.principle { margin-block: clamp(56px, 8vw, 96px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 48px; align-items: start; }
+.principle blockquote { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 2.8vw, 2.1rem); line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance; }
+.principle blockquote span { color: var(--orange); }
+.principle ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+.principle li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 10px; color: var(--muted-text); }
+.principle li::before { content: ""; width: 6px; height: 6px; margin-top: 9px; border-radius: 50%; background: var(--orange); }
+.principle li b { color: var(--white); font-weight: 600; }
+
+/* contact */
+.contact { border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); padding: clamp(28px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px 48px; align-items: center; margin-bottom: 64px; }
+.contact h2 { max-width: 12em; }
+.contact p { color: var(--muted-text); margin: 12px 0 0; }
+.pilot-form { display: flex; flex-wrap: wrap; gap: 10px; }
+.pilot-form input[type="email"] { flex: 1; min-width: 200px; padding: 0.85rem 1.1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); color: var(--white); font: 400 0.95rem var(--font-sans); outline: none; transition: border-color .2s; }
+.pilot-form input[type="email"]:focus { border-color: var(--orange); }
+.pilot-form input::placeholder { color: var(--muted); }
+.pilot-form .btn { font-size: 1rem; }
+.pilot-form .btn:disabled { cursor: default; opacity: .6; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-note { font-size: 0.78rem; color: var(--muted-text); min-height: 1.2em; margin: 10px 0 0; }
+.form-note.error { color: var(--orange); }
+.legend { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px 18px; }
+
+footer.site { border-top: 1px solid var(--border); padding-block: 26px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 0.78rem; color: var(--muted-text); }
+
+@media (max-width: 900px) {
+  .hero, .principle, .contact { grid-template-columns: minmax(0, 1fr); }
+  .group { grid-template-columns: minmax(0, 1fr); }
+  .pillars { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 620px) {
+  .items { grid-template-columns: minmax(0, 1fr); }
+  .items li:nth-child(2) { border-top: 1px solid var(--border); padding-top: 16px; }
+  .nav-links { display: none; }
+  .flist.cols { grid-template-columns: minmax(0, 1fr); }
+  .fgrid { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: -16px; padding: 0 16px 8px; scroll-padding-inline: 16px; scrollbar-width: none; }
+  .fgrid::-webkit-scrollbar { display: none; }
+  .fgrid .fcard { flex: 0 0 84%; scroll-snap-align: start; }
+  .swipe { display: flex; }
+  .fcard, .fwide { padding: 18px; }
+  .pm-mini, .in-note, .pm-hint, .pm-insp .in-sub, .in-rep { display: none; }
+  .pm-tp { font-size: 0.75rem; }
+  .filters { position: static; }
+  .basis { gap: 8px 12px; }
+  .btn { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .status i { animation: none; }
+  .btn { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="wordmark" href="#top" id="top">ryls<span>.</span></a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#explorer">Process mining</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div>
+      <p class="status"><i aria-hidden="true"></i>UAE → China trade-finance routing</p>
+      <h1 id="hero-title">Route smarter.<span class="accent">Defend every decision.</span></h1>
+      <p class="lede">Turn your payment data into a <strong>clear map</strong> of what’s working, what’s stuck and which cross-border rail gets the most value from your <strong>processes and policies</strong>.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contact">Book a pilot conversation</a>
+        <a class="btn btn-ghost" href="#features">See features</a>
+      </div>
+      <p class="aud">For UAE banks and trade finance institutions</p>
+    </div>
+
+    <article class="decision" aria-label="Illustrative example of a routing decision informed by process mining">
+      <header>
+        <span class="id">RYL-7Q4K</span>
+        <span class="tag-illu">Illustrative example</span>
+      </header>
+      <p class="corridor">AED-funded payment · UAE sender bank → PRC receiver bank · CNY</p>
+      <ol class="rails">
+        <li class="rail top"><span class="rank">1</span><span class="nm">CIPS-Direct<span class="sub">Eligible · no repair loops seen</span></span><span class="verdict">Recommended</span></li>
+        <li class="rail"><span class="rank">2</span><span class="nm">CIPS-Indirect<span class="sub">Eligible via sponsor bank</span></span><span class="verdict">Close</span></li>
+        <li class="rail off"><span class="rank">3</span><span class="nm">SWIFT<span class="sub">Eligible · repair loop on 5% of payments</span></span><span class="verdict">Behind</span></li>
+      </ol>
+      <dl class="basis">
+        <div><dt>Payments mapped</dt><dd>1,240 · eKYC to credit</dd></div>
+        <div><dt>Manual review</dt><dd>12% of payments</dd></div>
+        <div><dt>Rework loops</dt><dd class="ind">5% of payments</dd></div>
+        <div><dt>Lead strength</dt><dd>Clear</dd></div>
+      </dl>
+    </article>
+  </section>
+
+  <section class="features" id="features" aria-labelledby="features-title">
+    <div class="h2row"><h2 id="features-title">What Ryls does</h2><span class="swipe" aria-hidden="true">Swipe →</span></div>
+    <div class="fgrid">
+      <article class="fcard"><span class="k">Recommend</span><h3>A scored rail for every payment</h3><ul class="flist"><li><span>CIPS-Direct, CIPS-Indirect and SWIFT ranked</span></li><li><span>Rail availability per bank pair</span></li><li><span>Multi-leg cost and FX</span></li><li><span>Settlement-time estimate</span></li><li><span>Routing Decision Memo (PDF)</span></li></ul></article>
+      <article class="fcard"><span class="k">Record</span><h3>A record that stands up to review</h3><ul class="flist"><li><span>Decision reference before every release</span></li><li><span>Decision Ledger with CSV export</span></li><li><span>Bypass and outcome capture</span></li><li><span>Tamper-evident audit trail</span></li><li><span>Verify your records at any time</span></li></ul></article>
+      <article class="fcard"><span class="k">Prove</span><h3>Numbers that show their source</h3><ul class="flist"><li><span>Clear flags when estimates are used</span></li><li><span>As-of time on every input</span></li><li><span>Source trail for fees, FX and network data</span></li><li><span>Live CIPS participant tracking</span></li></ul></article>
+      <article class="fcard"><span class="k">Screen</span><h3>Your screening, your verdict</h3><ul class="flist"><li><span>Signed attestation or ComplyAdvantage</span></li><li><span>Sanctioned correspondent-bank flag*</span></li><li><span>Sanctions list versions cited on the memo</span></li><li><span>Compliance queue</span></li></ul><p class="fnote">*Exact legal-name match on the OFAC SDN, UN, EU and UAE EOCN lists. Your screening vendor remains the authority.</p></article>
+      <article class="fcard"><span class="k">Diagnose</span><h3>Routing Variance Diagnostic</h3><ul class="flist"><li><span>Runs inside your bank: CSV, MT103, pacs.008</span></li><li><span>Tamper-checked data handover</span></li><li><span>Joint exception review</span></li><li><span>Six-section findings report</span></li></ul><p class="fnote">Designed so that no names, account numbers, references or exact amounts leave the bank.</p></article>
+      <article class="fcard"><span class="k">Integrate</span><h3>Plug into your systems</h3><ul class="flist"><li><span>Secure API access with granular permissions</span></li><li><span>Reliable, duplicate-safe integration</span></li><li><span>Never holds up a payment</span></li><li><span>Real-time decision API</span><span class="st pilot">Pilot banks</span></li></ul></article>
+      <article class="fcard"><span class="k">Secure</span><h3>UAE data-protection controls</h3><ul class="flist"><li><span>Multi-factor sign-in and role-based access</span></li><li><span>Your data kept fully separate</span></li><li><span>Privacy vault and UAE data-residency safeguards</span></li><li><span>Erasure and data-subject requests</span></li></ul></article>
+      <article class="fcard"><span class="k">Traders</span><h3>Free rail comparison</h3><ul class="flist"><li><span>Rail availability and cost comparison</span></li><li><span>Your own fees and FX</span></li><li><span>You stay the decision-maker</span></li></ul></article>
+    </div>
+
+    <article class="fwide" id="explorer">
+      <span class="k">Process mining</span>
+      <h3>See how your payments really flow</h3>
+      <p class="fsub">Process mining turns your bank’s own payment events into a live map of every step, delay and rework loop.</p>
+      <ul class="flist cols"><li><span>Process map from your own payment events</span><span class="st pilot">Pilot</span></li><li><span>Drill into any step</span><span class="st pilot">Pilot</span></li><li><span>Reviewed identity matching</span><span class="st pilot">Pilot</span></li><li><span>Reproducible analyses</span><span class="st pilot">Pilot</span></li><li><span>In-canvas panels, zoom and minimap</span><span class="st soon">Coming soon</span></li><li><span>Throughput between any two steps</span><span class="st soon">Coming soon</span></li><li><span>Your bank’s own step names</span><span class="st soon">Coming soon</span></li><li><span>Advisory trade-risk context, never scored</span><span class="st soon">Coming soon</span></li></ul>
+      <p class="fnote">Pilot-ready and shown on synthetic data. Not yet validated on a bank’s live data.</p>
+
+      <figure class="pm" aria-label="Illustrative process mining view of UAE to China payment journeys">
+        <div class="pm-bar">
+          <div class="pm-title"><span class="pm-name">Process mining</span><span class="tag-illu">Illustrative example · synthetic data</span></div>
+          <div class="pm-tools">
+            <div class="pm-ctl">
+              <span class="pm-lbl">Metric <span class="st pilot">Pilot</span></span>
+              <div class="seg" role="group" aria-label="Map metric">
+                <button type="button" id="m-cases" data-metric="cases" aria-pressed="true">Cases</button>
+                <button type="button" id="m-occ" data-metric="occ" aria-pressed="false">Occurrences</button>
+                <button type="button" id="m-med" data-metric="med" aria-pressed="false">Median time</button>
+              </div>
+            </div>
+            <div class="pm-ctl">
+              <span class="pm-lbl">Throughput <span class="st soon">Coming soon</span></span>
+              <button type="button" class="tog" id="tp-toggle" aria-pressed="true">Rail selected → Beneficiary credited</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pm-body">
+          <div class="pm-rail">
+            <span class="pm-lbl">Detail <span class="st pilot">Pilot</span></span>
+            <div class="levels" role="group" aria-label="Detail level">
+              <button type="button" id="lv-5" data-level="5" aria-pressed="true" aria-label="Detail level 5 of 5">5</button>
+              <button type="button" id="lv-4" data-level="4" aria-pressed="false" aria-label="Detail level 4 of 5">4</button>
+              <button type="button" id="lv-3" data-level="3" aria-pressed="false" aria-label="Detail level 3 of 5">3</button>
+              <button type="button" id="lv-2" data-level="2" aria-pressed="false" aria-label="Detail level 2 of 5">2</button>
+              <button type="button" id="lv-1" data-level="1" aria-pressed="false" aria-label="Detail level 1 of 5">1</button>
+            </div>
+            <span class="pm-hint">Fewer levels hide the rare tail</span>
+          </div>
+
+          <div class="pm-map" id="pm-map">
+            <svg id="pm-svg" viewBox="0 0 760 770" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Process map: payment instruction received, eKYC check, optional manual review with documents requested looping back to eKYC, rail selected, sent via CIPS or SWIFT, correspondent bank on the SWIFT path with a repair and resend loop, beneficiary bank credited">
+              <defs>
+                <pattern id="pm-dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" class="pm-dot"/></pattern>
+                <marker id="ar" viewBox="0 0 10 10" refX="7" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="ar-m"/></marker>
+                <marker id="ar-hot" viewBox="0 0 10 10" refX="7" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="ar-h"/></marker>
+              </defs>
+              <rect x="-2000" y="-2000" width="4760" height="4770" fill="url(#pm-dots)"/>
+              <g id="pm-graph"></g>
+            </svg>
+            <div class="pm-zoom" aria-label="Zoom and pan">
+              <span class="st soon">Coming soon</span>
+              <button type="button" id="z-in" aria-label="Zoom in">+</button>
+              <button type="button" id="z-out" aria-label="Zoom out">−</button>
+              <button type="button" id="z-fit">Fit</button>
+            </div>
+            <p class="pm-tp" id="pm-tp"><b>Throughput</b> Rail selected → Credited · <span class="tabn">612 of 1,240</span> cases in range</p>
+          </div>
+
+          <aside class="pm-insp" aria-live="polite">
+            <span class="pm-lbl">Inspector <span class="st pilot">Pilot</span></span>
+            <h5 id="in-name">Manual review</h5>
+            <dl class="in-stats">
+              <div><dt>Cases</dt><dd id="in-cases">150</dd></div>
+              <div><dt>Occurrences</dt><dd id="in-occ">162</dd></div>
+              <div><dt>Median time to reach</dt><dd id="in-med">1.2h</dd></div>
+            </dl>
+            <p class="in-sub">Repeat distribution</p>
+            <div class="in-rep" id="in-rep"></div>
+            <p class="in-note">Select any step on the map. Floating in-canvas panels are coming soon.</p>
+            <div class="pm-mini">
+              <span class="pm-lbl">Minimap <span class="st soon">Coming soon</span></span>
+              <svg viewBox="0 0 760 770" aria-hidden="true"><use href="#pm-graph"/><rect id="mini-vp" x="0" y="0" width="760" height="770" class="mini-vp"/></svg>
+            </div>
+          </aside>
+        </div>
+      </figure>
+    </article>
+
+    <article class="fwide">
+      <span class="k">Next</span>
+      <h3>Where it’s heading</h3>
+      <ul class="flist cols"><li><span>Process-mining insights shaping every recommendation</span><span class="st road">Roadmap</span></li><li><span>Full evidence trail on every decision</span><span class="st road">Roadmap</span></li><li><span>Bank policy overlay</span><span class="st vision">Vision</span></li><li><span>Driver ranking and opportunity sizing</span><span class="st vision">Vision</span></li><li><span>Journey variant lists</span><span class="st vision">Vision</span></li><li><span>Self-service data onboarding</span><span class="st vision">Vision</span></li></ul>
+    </article>
+  </section>
+
+  <section class="principle" id="principles" aria-labelledby="principle-title">
+    <blockquote id="principle-title">Smarter routing. <span>Your team stays in control.</span></blockquote>
+    <ul>
+      <li><span><b>Fits alongside your existing payment operations</b></span></li>
+      <li><span><b>Works with the screening process you already trust</b></span></li>
+      <li><span><b>Clear evidence behind every recommendation</b></span></li>
+    </ul>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div>
+      <h2 id="contact-title">Talk to us at the conference</h2>
+      <p>Walkthroughs, diagnostics and pilot places.</p>
+    </div>
+    <div>
+      <form class="pilot-form" id="pilot-form">
+        <input type="email" name="email" placeholder="your@bank.ae" required autocomplete="email" aria-label="Work email">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-primary" type="submit">Book a pilot conversation</button>
+      </form>
+      <p class="form-note" id="form-note" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <footer class="site">
+    <span>© 2026 ryls.ae</span>
+    <span>Trade finance routing intelligence for the UAE–China corridor</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  // Pilot requests are relayed by Web3Forms to the Zoho inbox. The access key is public by design.
+  var form = document.getElementById('pilot-form');
+  var formNote = document.getElementById('form-note');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = form.querySelector('button');
+    var input = form.querySelector('input[type="email"]');
+    var email = input.value;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    input.disabled = true;
+    formNote.classList.remove('error');
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: '0f91748f-8aa6-4d8e-b00f-1ad0744eede3',
+        email: email,
+        botcheck: form.querySelector('input[name="botcheck"]').checked,
+        subject: 'Pilot conversation request · AI Everything conference',
+        from_name: 'ryls.ae conference page',
+        message: 'Pilot conversation requested from the AI Everything conference page by ' + email
+      })
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (!res.ok || !data.success) throw new Error(data.message || 'HTTP ' + res.status);
+      });
+    }).then(function () {
+      btn.textContent = "Thanks, we'll be in touch";
+      formNote.textContent = "We'll email you to book a time.";
+    }, function () {
+      btn.textContent = 'Book a pilot conversation';
+      btn.disabled = false;
+      input.disabled = false;
+      formNote.classList.add('error');
+      formNote.textContent = 'Something went wrong. Please try again in a moment.';
+    });
+  });
+
+})();
+</script>
+
+<script>
+/* Process Explorer illustration: synthetic data only */
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  var W = 190, H = 46, BASE = { x: 0, y: 0, w: 760, h: 770 };
+  var nodes = {
+    s:   { x: 260, y: 24,  term: 'Start' },
+    n1:  { x: 260, y: 88,  name: 'Payment instruction received', c: 1240, o: 1240, med: '—',    rep: [1240, 0, 0] },
+    n2:  { x: 260, y: 172, name: 'eKYC check',                   c: 1240, o: 1278, med: '3m',   rep: [1202, 38, 0] },
+    n3:  { x: 490, y: 256, name: 'Manual review',                c: 150,  o: 162,  med: '1.2h', rep: [138, 12, 0] },
+    n3b: { x: 490, y: 340, name: 'Documents requested',          c: 38,   o: 38,   med: '2.5h', rep: [38, 0, 0] },
+    n4:  { x: 260, y: 424, name: 'Rail selected',                c: 1240, o: 1240, med: '6m',   rep: [1240, 0, 0] },
+    n5a: { x: 140, y: 508, name: 'Sent via CIPS',                c: 780,  o: 780,  med: '12m',  rep: [780, 0, 0] },
+    n5b: { x: 400, y: 508, name: 'Sent via SWIFT',               c: 460,  o: 481,  med: '15m',  rep: [439, 21, 0] },
+    rp:  { x: 650, y: 508, name: 'Repair and resend',            c: 21,   o: 21,   med: '3.2h', rep: [21, 0, 0] },
+    n6:  { x: 400, y: 592, name: 'Correspondent bank received',  c: 460,  o: 481,  med: '1.9h', rep: [439, 21, 0] },
+    n7:  { x: 260, y: 676, name: 'Beneficiary bank credited',    c: 1240, o: 1240, med: '2.4h', rep: [1240, 0, 0] },
+    e:   { x: 260, y: 746, term: 'End' }
+  };
+  function v(x1, y1, x2, y2) { var dy = Math.max(12, (y2 - y1) * 0.5); return [[x1, y1], [x1, y1 + dy], [x2, y2 - dy], [x2, y2]]; }
+  // from, to, cases, occurrences, median, bezier points
+  var edges = [
+    ['s', 'n1', 1240, 1240, '—', v(260, 32, 260, 62)],
+    ['n1', 'n2', 1240, 1240, '3m', v(260, 111, 260, 146)],
+    ['n2', 'n4', 1116, 1116, '6m', v(236, 195, 236, 398)],
+    ['n2', 'n3', 150, 162, '1.2h', v(300, 195, 490, 230)],
+    ['n3', 'n3b', 38, 38, '2.5h', v(490, 279, 490, 314)],
+    ['n3b', 'n2', 38, 38, '1.8d', [[585, 340], [680, 340], [680, 172], [358, 172]]],
+    ['n3', 'n4', 124, 124, '4.1h', [[395, 256], [330, 256], [300, 320], [300, 398]]],
+    ['n4', 'n5a', 780, 780, '12m', v(220, 447, 140, 482)],
+    ['n4', 'n5b', 460, 460, '15m', v(300, 447, 400, 482)],
+    ['n5a', 'n7', 780, 780, '3.8h', v(140, 531, 220, 650)],
+    ['n5b', 'n6', 460, 481, '1.9h', v(400, 531, 400, 566)],
+    ['n6', 'rp', 21, 21, '3.2h', [[495, 592], [650, 592], [650, 570], [650, 534]]],
+    ['rp', 'n5b', 21, 21, '5.6h', [[555, 508], [535, 508], [518, 508], [498, 508]]],
+    ['n6', 'n7', 460, 460, '2.4h', v(400, 615, 300, 650)],
+    ['n7', 'e', 1240, 1240, '—', v(260, 699, 260, 736)]
+  ];
+  var HOT = { 'n4-n5a': 1, 'n4-n5b': 1, 'n5a-n7': 1, 'n5b-n6': 1, 'n6-n7': 1, 'n6-rp': 1, 'rp-n5b': 1 };
+  var TH = { 5: 0, 4: 30, 3: 100, 2: 200, 1: 500 };
+  var state = { metric: 'cases', level: 5, hot: true, sel: 'n3', vb: { x: 0, y: 0, w: 760, h: 770 } };
+
+  var svg = document.getElementById('pm-svg');
+  var g = document.getElementById('pm-graph');
+  var map = document.getElementById('pm-map');
+  if (!svg || !g) return;
+
+  function el(tag, attrs, parent) {
+    var n = document.createElementNS(NS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  function fmt(n) { return n.toLocaleString('en-US'); }
+  function visible(id) { var n = nodes[id]; return n.term || n.c >= TH[state.level]; }
+
+  function render() {
+    while (g.firstChild) g.removeChild(g.firstChild);
+    var th = TH[state.level];
+    var maxC = 1240;
+    var eg = el('g', {}, g);
+    edges.forEach(function (e) {
+      var a = nodes[e[0]], b = nodes[e[1]];
+      if (e[2] < th || !visible(e[0]) || !visible(e[1])) return;
+      var P = e[5];
+      var d = 'M' + P[0].join(' ') + ' C' + P[1].join(' ') + ' ' + P[2].join(' ') + ' ' + P[3].join(' ');
+      var hot = state.hot && HOT[e[0] + '-' + e[1]];
+      el('path', { d: d, 'class': 'e-path' + (hot ? ' hot' : ''), 'stroke-width': (1.5 + 6 * e[2] / maxC).toFixed(2), 'marker-end': hot ? 'url(#ar-hot)' : 'url(#ar)' }, eg);
+      var label = state.metric === 'cases' ? fmt(e[2]) : state.metric === 'occ' ? fmt(e[3]) : e[4];
+      if (label === '—') return;
+      var mx = (P[0][0] + 3 * P[1][0] + 3 * P[2][0] + P[3][0]) / 8, my = (P[0][1] + 3 * P[1][1] + 3 * P[2][1] + P[3][1]) / 8;
+      var w = label.length * 6.6 + 14;
+      el('rect', { x: mx - w / 2, y: my - 9, width: w, height: 18, rx: 9, 'class': 'e-pill' + (hot ? ' hot' : '') }, eg);
+      var t = el('text', { x: mx, y: my + 3.8, 'text-anchor': 'middle', 'class': 'e-txt' }, eg);
+      t.textContent = label;
+    });
+    Object.keys(nodes).forEach(function (id) {
+      var n = nodes[id];
+      if (!visible(id)) return;
+      if (n.term) {
+        el('circle', { cx: n.x, cy: n.y, r: 8, 'class': 'term' }, g);
+        var tt = el('text', { x: n.x + 16, y: n.y + 3.5, 'class': 'term-txt' }, g);
+        tt.textContent = n.term;
+        return;
+      }
+      var endHot = state.hot && (id === 'n4' || id === 'n7');
+      var ng = el('g', { 'class': 'node' + (state.sel === id ? ' sel' : '') + (endHot ? ' end-hot' : ''), tabindex: 0, role: 'button', 'aria-label': n.name + ', ' + fmt(n.c) + ' cases', 'data-id': id }, g);
+      el('rect', { x: n.x - W / 2, y: n.y - H / 2, width: W, height: H, rx: 8, 'class': 'n-box' }, ng);
+      el('rect', { x: n.x - W / 2 + 8, y: n.y + H / 2 - 5, width: (W - 16) * n.c / maxC, height: 2, rx: 1, 'class': 'n-bar' }, ng);
+      var nm = el('text', { x: n.x, y: n.y - 3, 'text-anchor': 'middle', 'class': 'n-name' }, ng);
+      nm.textContent = n.name;
+      var sub = state.metric === 'cases' ? fmt(n.c) + ' cases' : state.metric === 'occ' ? fmt(n.o) + ' occurrences' : 'median to reach ' + n.med;
+      var st = el('text', { x: n.x, y: n.y + 12, 'text-anchor': 'middle', 'class': 'n-sub' }, ng);
+      st.textContent = sub;
+      if (endHot) {
+        var lbl = id === 'n4' ? 'FROM' : 'TO';
+        var tw = lbl.length * 7 + 12, tx = n.x - W / 2 - tw - 6;
+        el('rect', { x: tx, y: n.y - 9, width: tw, height: 18, rx: 4, 'class': 'hot-tag' }, g);
+        var ht = el('text', { x: tx + tw / 2, y: n.y + 3.5, 'text-anchor': 'middle', 'class': 'hot-tag-txt' }, g);
+        ht.textContent = lbl;
+      }
+    });
+    inspect();
+  }
+
+  function inspect() {
+    var n = nodes[state.sel];
+    if (!n || !visible(state.sel)) { state.sel = 'n4'; n = nodes.n4; }
+    document.getElementById('in-name').textContent = n.name;
+    document.getElementById('in-cases').textContent = fmt(n.c);
+    document.getElementById('in-occ').textContent = fmt(n.o);
+    document.getElementById('in-med').textContent = n.med;
+    var rep = document.getElementById('in-rep');
+    rep.innerHTML = '';
+    n.rep.forEach(function (v, i) {
+      var row = document.createElement('div');
+      row.className = 'rep-row';
+      row.innerHTML = '<span>' + (i + 1) + '×</span><span class="bar"><i style="width:' + (100 * v / n.c).toFixed(1) + '%"></i></span><span>' + fmt(v) + '</span>';
+      rep.appendChild(row);
+    });
+  }
+
+  g.addEventListener('click', function (ev) {
+    var t = ev.target.closest ? ev.target.closest('.node') : null;
+    if (t && !moved) { state.sel = t.getAttribute('data-id'); render(); }
+  });
+  g.addEventListener('keydown', function (ev) {
+    var t = ev.target.closest ? ev.target.closest('.node') : null;
+    if (t && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); state.sel = t.getAttribute('data-id'); render(); var f = g.querySelector('.node[data-id="' + state.sel + '"]'); if (f) f.focus(); }
+  });
+
+  function bindGroup(selector, key, attr, cast) {
+    var btns = Array.prototype.slice.call(document.querySelectorAll(selector));
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        state[key] = cast(b.getAttribute(attr));
+        btns.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+        render();
+      });
+    });
+  }
+  bindGroup('.seg button', 'metric', 'data-metric', String);
+  bindGroup('.levels button', 'level', 'data-level', Number);
+
+  var tp = document.getElementById('tp-toggle'), tpNote = document.getElementById('pm-tp');
+  tp.addEventListener('click', function () {
+    state.hot = !state.hot;
+    tp.setAttribute('aria-pressed', String(state.hot));
+    tpNote.hidden = !state.hot;
+    render();
+  });
+
+  /* zoom and pan */
+  var vp = document.getElementById('mini-vp');
+  function applyVB() {
+    var v = state.vb;
+    svg.setAttribute('viewBox', v.x + ' ' + v.y + ' ' + v.w + ' ' + v.h);
+    vp.setAttribute('x', v.x); vp.setAttribute('y', v.y); vp.setAttribute('width', v.w); vp.setAttribute('height', v.h);
+    map.classList.toggle('zoomed', v.w < BASE.w - 1);
+  }
+  function clamp() {
+    var v = state.vb;
+    v.x = Math.min(Math.max(v.x, BASE.x - v.w * 0.25), BASE.w - v.w * 0.75);
+    v.y = Math.min(Math.max(v.y, BASE.y - v.h * 0.25), BASE.h - v.h * 0.75);
+  }
+  function zoom(f) {
+    var v = state.vb, cx = v.x + v.w / 2, cy = v.y + v.h / 2;
+    var nw = Math.min(BASE.w, Math.max(BASE.w / 4, v.w * f));
+    var nh = nw * BASE.h / BASE.w;
+    state.vb = { x: cx - nw / 2, y: cy - nh / 2, w: nw, h: nh };
+    if (nw >= BASE.w) state.vb = { x: 0, y: 0, w: BASE.w, h: BASE.h };
+    clamp(); applyVB();
+  }
+  document.getElementById('z-in').addEventListener('click', function () { zoom(0.75); });
+  document.getElementById('z-out').addEventListener('click', function () { zoom(1 / 0.75); });
+  document.getElementById('z-fit').addEventListener('click', function () { state.vb = { x: 0, y: 0, w: BASE.w, h: BASE.h }; applyVB(); });
+
+  var drag = null, moved = false;
+  svg.addEventListener('pointerdown', function (ev) {
+    moved = false;
+    if (state.vb.w >= BASE.w - 1) return;
+    drag = { x: ev.clientX, y: ev.clientY, vx: state.vb.x, vy: state.vb.y };
+    map.classList.add('dragging');
+  });
+  window.addEventListener('pointermove', function (ev) {
+    if (!drag) return;
+    var r = svg.getBoundingClientRect();
+    var s = Math.max(state.vb.w / r.width, state.vb.h / r.height);
+    var dx = ev.clientX - drag.x, dy = ev.clientY - drag.y;
+    if (Math.abs(dx) + Math.abs(dy) > 3) moved = true;
+    state.vb.x = drag.vx - dx * s; state.vb.y = drag.vy - dy * s;
+    clamp(); applyVB();
+  });
+  window.addEventListener('pointerup', function () { drag = null; map.classList.remove('dragging'); });
+
+  render();
+  applyVB();
+})();
+</script>
+</body>
+</html>
