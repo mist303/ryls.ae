@@ -464,7 +464,6 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
 
   <footer class="site">
     <span>© 2026 ryls.ae</span>
-    <span>Trade finance routing intelligence for the UAE–China corridor</span>
   </footer>
 </div>
 
@@ -500,12 +499,13 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
     }).then(function () {
       btn.textContent = "Thanks, we'll be in touch";
       formNote.textContent = "We'll email you to book a time.";
-    }, function () {
+    }, function (err) {
+      console.error('Web3Forms submit failed:', err);
       btn.textContent = 'Book a pilot conversation';
       btn.disabled = false;
       input.disabled = false;
       formNote.classList.add('error');
-      formNote.textContent = 'Something went wrong. Please try again in a moment.';
+      formNote.innerHTML = 'Something went wrong. Email us at <a href="mailto:hello@ryls.ae" style="color:inherit">hello@ryls.ae</a>.';
     });
   });
 
