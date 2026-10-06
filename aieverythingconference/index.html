@@ -242,6 +242,7 @@ h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.9rem
 .fsub { margin: 8px 0 0; color: var(--muted-text); max-width: 46em; }
 .fnote { margin: 14px 0 0; font-size: 0.78rem; line-height: 1.45; color: var(--muted-text); }
 .fwide .pm { margin-top: 20px; }
+.focus .fwide { margin-top: 0; }
 
 /* principle band */
 .principle { margin-block: clamp(56px, 8vw, 96px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 48px; align-items: start; }
@@ -302,8 +303,8 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
   <nav class="nav" aria-label="Main">
     <a class="wordmark" href="ryls.ae" id="top">ryls<span>.</span></a>
     <div class="nav-links">
-      <a href="#features">Features</a>
       <a href="#explorer">Process mining</a>
+      <a href="#features">Features</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -327,9 +328,9 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
       </header>
       <p class="corridor">AED-funded payment · UAE sender bank → PRC receiver bank · CNY</p>
       <ol class="rails">
-        <li class="rail top"><span class="rank">1</span><span class="nm">CIPS-Direct<span class="sub">Eligible · no repair loops seen</span></span><span class="verdict">Recommended</span></li>
-        <li class="rail"><span class="rank">2</span><span class="nm">CIPS-Indirect<span class="sub">Eligible via sponsor bank</span></span><span class="verdict">Close</span></li>
-        <li class="rail off"><span class="rank">3</span><span class="nm">SWIFT<span class="sub">Eligible · repair loop on 5% of payments</span></span><span class="verdict">Behind</span></li>
+        <li class="rail top"><span class="rank">1</span><span class="nm">CIPS-Direct<span class="sub">Best fit for your processes and policies</span></span><span class="verdict">Recommended</span></li>
+        <li class="rail"><span class="rank">2</span><span class="nm">SWIFT<span class="sub">Eligible · repair loop on 5% of payments</span></span><span class="verdict">Close</span></li>
+        <li class="rail off"><span class="rank">3</span><span class="nm">CIPS-Indirect<span class="sub">Eligible via sponsor bank</span></span><span class="verdict">Behind</span></li>
       </ol>
       <dl class="basis">
         <div><dt>Payments mapped</dt><dd>1,240 · eKYC to credit</dd></div>
@@ -340,19 +341,7 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
     </article>
   </section>
 
-  <section class="features" id="features" aria-labelledby="features-title">
-    <div class="h2row"><h2 id="features-title">What Ryls does</h2><span class="swipe" aria-hidden="true">Swipe →</span></div>
-    <div class="fgrid">
-      <article class="fcard"><span class="k">Recommend</span><h3>A scored rail for every payment</h3><ul class="flist"><li><span>CIPS-Direct, CIPS-Indirect and SWIFT ranked</span></li><li><span>Rail availability per bank pair</span></li><li><span>Multi-leg cost and FX</span></li><li><span>Settlement-time estimate</span></li><li><span>Routing Decision Memo (PDF)</span></li></ul></article>
-      <article class="fcard"><span class="k">Record</span><h3>A record that stands up to review</h3><ul class="flist"><li><span>Decision reference before every release</span></li><li><span>Decision Ledger with CSV export</span></li><li><span>Bypass and outcome capture</span></li><li><span>Tamper-evident audit trail</span></li><li><span>Verify your records at any time</span></li></ul></article>
-      <article class="fcard"><span class="k">Prove</span><h3>Numbers that show their source</h3><ul class="flist"><li><span>Clear flags when estimates are used</span></li><li><span>As-of time on every input</span></li><li><span>Source trail for fees, FX and network data</span></li><li><span>Live CIPS participant tracking</span></li></ul></article>
-      <article class="fcard"><span class="k">Screen</span><h3>Your screening, your verdict</h3><ul class="flist"><li><span>Signed attestation or ComplyAdvantage</span></li><li><span>Sanctioned correspondent-bank flag*</span></li><li><span>Sanctions list versions cited on the memo</span></li><li><span>Compliance queue</span></li></ul><p class="fnote">*Exact legal-name match on the OFAC SDN, UN, EU and UAE EOCN lists. Your screening vendor remains the authority.</p></article>
-      <article class="fcard"><span class="k">Diagnose</span><h3>Routing Variance Diagnostic</h3><ul class="flist"><li><span>Runs inside your bank: CSV, MT103, pacs.008</span></li><li><span>Tamper-checked data handover</span></li><li><span>Joint exception review</span></li><li><span>Six-section findings report</span></li></ul><p class="fnote">Designed so that no names, account numbers, references or exact amounts leave the bank.</p></article>
-      <article class="fcard"><span class="k">Integrate</span><h3>Plug into your systems</h3><ul class="flist"><li><span>Secure API access with granular permissions</span></li><li><span>Reliable, duplicate-safe integration</span></li><li><span>Never holds up a payment</span></li><li><span>Real-time decision API</span><span class="st pilot">Pilot banks</span></li></ul></article>
-      <article class="fcard"><span class="k">Secure</span><h3>UAE data-protection controls</h3><ul class="flist"><li><span>Multi-factor sign-in and role-based access</span></li><li><span>Your data kept fully separate</span></li><li><span>Privacy vault and UAE data-residency safeguards</span></li><li><span>Erasure and data-subject requests</span></li></ul></article>
-      <article class="fcard"><span class="k">Traders</span><h3>Free rail comparison</h3><ul class="flist"><li><span>Rail availability and cost comparison</span></li><li><span>Your own fees and FX</span></li><li><span>You stay the decision-maker</span></li></ul></article>
-    </div>
-
+  <section class="focus" aria-label="Process mining">
     <article class="fwide" id="explorer">
       <span class="k">Process mining</span>
       <h3>See how your payments really flow</h3>
@@ -430,6 +419,20 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
         </div>
       </figure>
     </article>
+  </section>
+
+  <section class="features" id="features" aria-labelledby="features-title">
+    <div class="h2row"><h2 id="features-title">What Ryls does</h2><span class="swipe" aria-hidden="true">Swipe →</span></div>
+    <div class="fgrid">
+      <article class="fcard"><span class="k">Recommend</span><h3>A scored rail for every payment</h3><ul class="flist"><li><span>CIPS-Direct, CIPS-Indirect and SWIFT ranked</span></li><li><span>Rail availability per bank pair</span></li><li><span>Multi-leg cost and FX</span></li><li><span>Settlement-time estimate</span></li><li><span>Routing Decision Memo (PDF)</span></li></ul></article>
+      <article class="fcard"><span class="k">Record</span><h3>A record that stands up to review</h3><ul class="flist"><li><span>Decision reference before every release</span></li><li><span>Decision Ledger with CSV export</span></li><li><span>Bypass and outcome capture</span></li><li><span>Tamper-evident audit trail</span></li><li><span>Verify your records at any time</span></li></ul></article>
+      <article class="fcard"><span class="k">Prove</span><h3>Numbers that show their source</h3><ul class="flist"><li><span>Clear flags when estimates are used</span></li><li><span>As-of time on every input</span></li><li><span>Source trail for fees, FX and network data</span></li><li><span>Live CIPS participant tracking</span></li></ul></article>
+      <article class="fcard"><span class="k">Screen</span><h3>Your screening, your verdict</h3><ul class="flist"><li><span>Signed attestation or ComplyAdvantage</span></li><li><span>Sanctioned correspondent-bank flag*</span></li><li><span>Sanctions list versions cited on the memo</span></li><li><span>Compliance queue</span></li></ul><p class="fnote">*Exact legal-name match on the OFAC SDN, UN, EU and UAE EOCN lists. Your screening vendor remains the authority.</p></article>
+      <article class="fcard"><span class="k">Diagnose</span><h3>Routing Variance Diagnostic</h3><ul class="flist"><li><span>Runs inside your bank: CSV, MT103, pacs.008</span></li><li><span>Tamper-checked data handover</span></li><li><span>Joint exception review</span></li><li><span>Six-section findings report</span></li></ul><p class="fnote">Designed so that no names, account numbers, references or exact amounts leave the bank.</p></article>
+      <article class="fcard"><span class="k">Integrate</span><h3>Plug into your systems</h3><ul class="flist"><li><span>Secure API access with granular permissions</span></li><li><span>Reliable, duplicate-safe integration</span></li><li><span>Never holds up a payment</span></li><li><span>Real-time decision API</span><span class="st pilot">Pilot banks</span></li></ul></article>
+      <article class="fcard"><span class="k">Secure</span><h3>UAE data-protection controls</h3><ul class="flist"><li><span>Multi-factor sign-in and role-based access</span></li><li><span>Your data kept fully separate</span></li><li><span>Privacy vault and UAE data-residency safeguards</span></li><li><span>Erasure and data-subject requests</span></li></ul></article>
+      <article class="fcard"><span class="k">Traders</span><h3>Free rail comparison</h3><ul class="flist"><li><span>Rail availability and cost comparison</span></li><li><span>Your own fees and FX</span></li><li><span>You stay the decision-maker</span></li></ul></article>
+    </div>
 
     <article class="fwide">
       <span class="k">Next</span>
