@@ -84,6 +84,7 @@ h1 .accent { color: var(--orange); display: block; }
 .rail .rank { font-family: var(--font-display); font-weight: 700; color: var(--muted-text); text-align: center; font-variant-numeric: tabular-nums; }
 .rail .nm { font-weight: 600; }
 .rail .sub { display: block; font-size: 0.74rem; color: var(--muted-text); font-weight: 400; }
+.rail .sub .bold { font-weight: 700; }
 .rail .verdict { font-size: 0.72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-text); }
 .rail.top { border-color: var(--orange); background: var(--orange-dim); }
 .rail.top .rank, .rail.top .verdict { color: var(--orange); }
@@ -329,7 +330,7 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
       <p class="corridor">UAE sender bank → PRC receiver bank · CNY</p>
       <ol class="rails">
         <li class="rail top"><span class="rank">1</span><span class="nm">CIPS-Direct<span class="sub">Best fit for your processes and policies</span></span><span class="verdict">Recommended</span></li>
-        <li class="rail"><span class="rank">2</span><span class="nm">SWIFT<span class="sub">Eligible · repair loop on 5% of payments</span></span><span class="verdict">Close</span></li>
+        <li class="rail"><span class="rank">2</span><span class="nm">SWIFT<span class="sub"><span class="bold">Eligible</span> · repair loop on 5% of payments</span></span><span class="verdict">Close</span></li>
         <li class="rail off"><span class="rank">3</span><span class="nm">CIPS-Indirect<span class="sub">Eligible via sponsor bank</span></span><span class="verdict">Behind</span></li>
       </ol>
       <dl class="basis">
