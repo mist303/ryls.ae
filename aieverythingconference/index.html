@@ -51,7 +51,7 @@ a { color: inherit; }
 .wordmark span { color: var(--orange); }
 .nav-links { display: flex; gap: 24px; flex-wrap: wrap; font-size: 0.85rem; }
 .nav-links a { color: var(--muted-text); text-decoration: none; transition: color .2s; }
-.nav-links a:hover { color: var(--white); }
+.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--white); }
 
 /* hero */
 .hero { position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(32px, 5vw, 72px); align-items: center; padding-block: clamp(32px, 6vw, 72px) clamp(56px, 8vw, 96px); }
@@ -65,11 +65,11 @@ h1 .accent { color: var(--orange); display: block; }
 .lede { font-size: clamp(1.02rem, 1.6vw, 1.15rem); font-weight: 300; color: var(--muted-text); max-width: 34em; margin: 0 0 36px; }
 .lede strong { color: var(--white); font-weight: 500; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.btn { display: inline-flex; align-items: center; gap: 10px; padding: 0.85rem 1.5rem; border-radius: var(--radius); border: 1px solid transparent; font: 700 1.2rem/1.2 var(--font-sans); text-decoration: none; cursor: pointer; transition: opacity .2s, transform .1s, border-color .2s; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 0.85rem 1.5rem; border-radius: var(--radius); border: 1px solid transparent; font: 600 1rem/1.2 var(--font-sans); text-decoration: none; cursor: pointer; transition: opacity .2s, transform .1s, border-color .2s; }
 .btn:active { transform: scale(.98); }
 .btn-primary { background: var(--orange); color: var(--on-orange); }
 .btn-primary:hover { opacity: .88; }
-.btn-ghost { background: transparent; color: var(--white); border-color: var(--border); font-size: 1rem; font-weight: 500; }
+.btn-ghost { background: transparent; color: var(--white); border-color: var(--border); }
 .btn-ghost:hover { border-color: var(--muted); }
 .aud { font-size: 0.78rem; color: var(--muted-text); margin: 14px 0 0; }
 
@@ -78,7 +78,7 @@ h1 .accent { color: var(--orange); display: block; }
 .decision header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
 .decision .id { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.01em; }
 .tag-illu { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-text); border: 1px dashed var(--muted); border-radius: 999px; padding: 3px 9px; white-space: nowrap; }
-.corridor { color: var(--muted-text); margin: 10px 0 18px; font-size: 0.8rem; text-align: center; }
+.corridor { color: var(--muted-text); margin: 10px 0 18px; font-size: 0.8rem; }
 .rails { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .rail { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 11px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); }
 .rail .rank { font-family: var(--font-display); font-weight: 700; color: var(--muted-text); text-align: center; font-variant-numeric: tabular-nums; }
@@ -261,7 +261,6 @@ h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.9rem
 .pilot-form input[type="email"] { flex: 1; min-width: 200px; padding: 0.85rem 1.1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); color: var(--white); font: 400 0.95rem var(--font-sans); outline: none; transition: border-color .2s; }
 .pilot-form input[type="email"]:focus { border-color: var(--orange); }
 .pilot-form input::placeholder { color: var(--muted); }
-.pilot-form .btn { font-size: 1rem; }
 .pilot-form .btn:disabled { cursor: default; opacity: .6; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .form-note { font-size: 0.78rem; color: var(--muted-text); min-height: 1.2em; margin: 10px 0 0; }
@@ -301,18 +300,18 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
 <body>
 <div class="wrap">
   <nav class="nav" aria-label="Main">
-    <a class="wordmark" href="ryls.ae" id="top">ryls<span>.</span></a>
+    <a class="wordmark" href="/" id="top">ryls<span>.</span></a>
     <div class="nav-links">
-      <a href="#explorer">Process mining</a>
-      <a href="#features">Features</a>
-      <a href="#contact">Contact</a>
+      <a href="/conference/">What we do</a>
+      <a href="/about/">About</a>
+      <a href="mailto:hello@ryls.ae">Contact</a>
     </div>
   </nav>
 
   <section class="hero" aria-labelledby="hero-title">
     <div>
       <p class="status"><i aria-hidden="true"></i>Payments intelligence for banks and PSPs · UAE–China first</p>
-      <h1 id="hero-title">Route smarter.<span class="accent">Defend every decision.</span></h1>
+      <h1 id="hero-title">Route smarter. <span class="accent">Defend every decision.</span></h1>
       <p class="lede">See every cross-border payment as <strong>one journey</strong>, from your own teams to rails and correspondents. Check it against your <strong>policies and SLAs</strong>, and pick the rail that delivers the most value.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#contact">Book a pilot conversation</a>
@@ -324,9 +323,9 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
     <article class="decision" aria-label="Illustrative example of a routing decision informed by process mining">
       <header>
         <span class="id">RYL-7Q4K</span>
-        <span class="tag-illu">AED-funded payment</span>
+        <span class="tag-illu">Illustrative</span>
       </header>
-      <p class="corridor">UAE sender bank → PRC receiver bank</p>
+      <p class="corridor">AED-funded payment · UAE sender bank → PRC receiver bank</p>
       <ol class="rails">
         <li class="rail top"><span class="rank">1</span><span class="nm">CIPS-Direct<span class="sub">Best fit for your processes and policies</span></span><span class="verdict">Recommended</span></li>
         <li class="rail"><span class="rank">2</span><span class="nm">SWIFT<span class="sub">Delays due to a repair loop on 5% of payments</span></span><span class="verdict">Close</span></li>
@@ -346,7 +345,7 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
       <span class="k">Process mining</span>
       <h3>See how your payments really flow</h3>
       <p class="fsub">Process mining turns your own payment events into a live map of every step, delay and rework loop: intake, screening, approval, repair and release inside your institution, plus the external legs across rails and correspondents, in one journey.</p>
-      <ul class="flist cols"><li><span>Process map from your own payment events</span><span class="st pilot">Pilot</span></li><li><span>Internal steps and external legs in one journey</span><span class="st pilot">Pilot</span></li><li><span>Drill into any step</span><span class="st pilot">Pilot</span></li><li><span>Reviewed identity matching</span><span class="st pilot">Pilot</span></li><li><span>Reproducible analyses</span><span class="st pilot">Pilot</span></li><li><span>In-canvas panels, zoom and minimap</span><span class="st soon">Coming soon</span></li><li><span>Throughput between any two steps</span><span class="st soon">Coming soon</span></li><li><span>Your own step names</span><span class="st soon">Coming soon</span></li><li><span>SLA tracking against your own targets, with every breach flagged</span><span class="st soon">Coming soon</span></li><li><span>Advisory trade-risk context, never scored</span><span class="st soon">Coming soon</span></li></ul>
+      <ul class="flist cols"><li><span>Process map from your own payment events</span><span class="st pilot">Pilot</span></li><li><span>Internal steps and external legs in one journey</span><span class="st pilot">Pilot</span></li><li><span>Drill into any step</span><span class="st pilot">Pilot</span></li><li><span>Reviewed identity matching</span><span class="st pilot">Pilot</span></li><li><span>Reproducible analyses</span><span class="st pilot">Pilot</span></li><li><span>In-canvas panels, zoom and minimap</span><span class="st pilot">Pilot</span></li><li><span>Throughput between any two steps</span><span class="st pilot">Pilot</span></li><li><span>Your own step names</span><span class="st pilot">Pilot</span></li><li><span>SLA tracking against your own targets, with every breach flagged</span><span class="st soon">Coming soon</span></li><li><span>Advisory trade-risk context, never scored</span><span class="st soon">Coming soon</span></li></ul>
       <p class="fnote">Starting with UAE–China, but the mining engine works on any corridor and any rail. Pilot-ready and shown on synthetic data. Not yet validated on a bank’s live data.</p>
 
       <figure class="pm" aria-label="Illustrative process mining view of UAE to China payment journeys">
@@ -362,7 +361,7 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
               </div>
             </div>
             <div class="pm-ctl">
-              <span class="pm-lbl">Throughput <span class="st soon">Coming soon</span></span>
+              <span class="pm-lbl">Throughput <span class="st pilot">Pilot</span></span>
               <button type="button" class="tog" id="tp-toggle" aria-pressed="true">Rail selected → Beneficiary credited</button>
             </div>
           </div>
@@ -392,7 +391,7 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
               <g id="pm-graph"></g>
             </svg>
             <div class="pm-zoom" aria-label="Zoom and pan">
-              <span class="st soon">Coming soon</span>
+              <span class="st pilot">Pilot</span>
               <button type="button" id="z-in" aria-label="Zoom in">+</button>
               <button type="button" id="z-out" aria-label="Zoom out">−</button>
               <button type="button" id="z-fit">Fit</button>
@@ -410,9 +409,9 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
             </dl>
             <p class="in-sub">Repeat distribution</p>
             <div class="in-rep" id="in-rep"></div>
-            <p class="in-note">Select any step on the map. Floating in-canvas panels are coming soon.</p>
+            <p class="in-note">Select any step on the map.</p>
             <div class="pm-mini">
-              <span class="pm-lbl">Minimap <span class="st soon">Coming soon</span></span>
+              <span class="pm-lbl">Minimap <span class="st pilot">Pilot</span></span>
               <svg viewBox="0 0 760 770" aria-hidden="true"><use href="#pm-graph"/><rect id="mini-vp" x="0" y="0" width="760" height="770" class="mini-vp"/></svg>
             </div>
           </aside>
@@ -437,7 +436,7 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
     <article class="fwide">
       <span class="k">Next</span>
       <h3>Where it’s heading</h3>
-      <ul class="flist cols"><li><span>Process-mining insights shaping every recommendation</span><span class="st road">Roadmap</span></li><li><span>Full evidence trail on every decision</span><span class="st road">Roadmap</span></li><li><span>Bank policy overlay</span><span class="st vision">Vision</span></li><li><span>Driver ranking and opportunity sizing</span><span class="st vision">Vision</span></li><li><span>Machine learning on your payment traffic to suggest process improvements, within your policy</span><span class="st vision">Vision</span></li><li><span>Journey variant lists</span><span class="st vision">Vision</span></li><li><span>Self-service data onboarding</span><span class="st vision">Vision</span></li></ul>
+      <ul class="flist cols"><li><span>Process-mining insights shaping every recommendation</span><span class="st soon">Coming soon</span></li><li><span>Full evidence trail on every decision</span><span class="st soon">Coming soon</span></li><li><span>Bank policy overlay</span><span class="st road">Roadmap</span></li><li><span>Driver ranking and opportunity sizing</span><span class="st road">Roadmap</span></li><li><span>Machine learning on your payment traffic to suggest process improvements, within your policy</span><span class="st vision">Vision</span></li><li><span>Journey variant lists</span><span class="st vision">Vision</span></li><li><span>Self-service data onboarding</span><span class="st vision">Vision</span></li></ul>
     </article>
   </section>
 
