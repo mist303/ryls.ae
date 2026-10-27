@@ -12,8 +12,8 @@
 <meta property="og:description" content="Payments intelligence for banks and PSPs: map every cross-border payment from your own teams to rails and correspondents, check it against your policies and SLAs, and pick the rail that delivers the most value.">
 <meta property="og:url" content="https://www.ryls.ae/aieverythingconference/">
 <meta name="twitter:card" content="summary">
-<!-- If this page is only for the event, uncomment the next line to keep it out of search results -->
-<!-- <meta name="robots" content="noindex"> -->
+<!-- Event-only copy of /conference/: kept out of search results -->
+<meta name="robots" content="noindex">
 <title>Ryls · Payments intelligence for banks and PSPs</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -446,12 +446,14 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
       <li><span><b>Fits alongside your existing payment operations</b></span></li>
       <li><span><b>Works with the screening process you already trust</b></span></li>
       <li><span><b>Clear evidence behind every recommendation</b></span></li>
+      <li><span><b>Advisory only: never holds funds or touches a payment</b></span></li>
+      <li><span><b>Your team makes every final call</b></span></li>
     </ul>
   </section>
 
   <section class="contact" id="contact" aria-labelledby="contact-title">
     <div>
-      <h2 id="contact-title">Talk to us at the conference</h2>
+      <h2 id="contact-title">Talk to us at Dubai AI Festival</h2>
       <p>Walkthroughs, diagnostics and pilot places.</p>
     </div>
     <div>
@@ -474,6 +476,8 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
   // Pilot requests are relayed by Web3Forms to the Zoho inbox. The access key is public by design.
   var form = document.getElementById('pilot-form');
   var formNote = document.getElementById('form-note');
+  // Tags leads with the QR code's utm_source, e.g. ?utm_source=dubai-ai-festival
+  var source = new URLSearchParams(location.search).get('utm_source') || 'direct';
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var btn = form.querySelector('button');
@@ -489,10 +493,11 @@ footer.site { border-top: 1px solid var(--border); padding-block: 26px; display:
       body: JSON.stringify({
         access_key: '0f91748f-8aa6-4d8e-b00f-1ad0744eede3',
         email: email,
+        source: source,
         botcheck: form.querySelector('input[name="botcheck"]').checked,
-        subject: 'Pilot conversation request · AI Everything conference',
-        from_name: 'ryls.ae conference page',
-        message: 'Pilot conversation requested from the AI Everything conference page by ' + email
+        subject: 'Pilot conversation request · Dubai AI Festival',
+        from_name: 'ryls.ae event page',
+        message: 'Pilot conversation requested from the Dubai AI Festival page by ' + email + ' (source: ' + source + ')'
       })
     }).then(function (res) {
       return res.json().then(function (data) {
